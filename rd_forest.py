@@ -57,11 +57,11 @@ if __name__ == '__main__':
         df, X, Y = prepare_data()
 
         # 90% test/train split
-        split = 9*(len(Y)//10)
-        Y_train = Y[:split]
+        split = len(Y)//10
+        Y_train = Y[:9*split]
         Y_test  = Y[-split:]
 
-        X_train = X[:split]
+        X_train = X[:9*split]
         X_test  = X[-split:]
 
         forest = ExtraTreesClassifier(n_estimators=250,
