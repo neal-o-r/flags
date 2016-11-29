@@ -25,6 +25,8 @@ def prepare_data():
         df['Botr_col'] = df.Botright.apply(colours)
         df['Main_col'] = df['Main-hue'].apply(colours)
 
+	df = df.sample(frac=1.).reset_index(drop=True)
+
         # the columns we want to train on
         column_mask = range(7,16) + range(18,28) + [31,32,33]
         df_features = df[df.columns[column_mask]]
@@ -41,11 +43,11 @@ if __name__ == '__main__':
         df, X, Y = prepare_data()
 
         # 90% test/train split
-        split = 9*(len(Y)//10)
-        Y_train = Y[:split]
+        split = len(Y)//10
+        Y_train = Y[:9*split]
         Y_test  = Y[-split:]
 
-        X_train = X[:split]
+        X_train = X[:9*split]
         X_test  = X[-split:]
         
         
@@ -56,10 +58,8 @@ if __name__ == '__main__':
         acc = accuracy_score(Y_test, model.predict(X_test))
 
         print("Prediction Accuracy on test set: %.2f%%" %(100*acc))
-
+'''
         with open("tree.dot", 'w') as f:
                 f = tree.export_graphviz(model, out_file=f,
                         class_names=df.columns)
-
-
-
+'''

@@ -27,6 +27,8 @@ def prepare_data():
         df['Topl_col'] = df.Topleft.apply(colours)
         df['Botr_col'] = df.Botright.apply(colours)
         df['Main_col'] = df['Main-hue'].apply(colours)
+	
+	df = df.sample(frac=1.).reset_index(drop=True)
 
         # get feature columns
         column_mask = range(7,16) + range(18,28) + [31,32,33]
