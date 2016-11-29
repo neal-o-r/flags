@@ -58,8 +58,7 @@ if __name__ == '__main__':
         acc = accuracy_score(Y_test, model.predict(X_test))
 
         print("Prediction Accuracy on test set: %.2f%%" %(100*acc))
-'''
+
         with open("tree.dot", 'w') as f:
                 f = tree.export_graphviz(model, out_file=f,
                         class_names=df.columns)
-'''

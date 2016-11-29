@@ -42,8 +42,6 @@ def prepare_data():
 
 def make_chart(df, X, importances, indices, std):
 
-        plt.figure()
-        plt.title("Feature importances")
         plt.bar(range(X.shape[1]), importances[indices],
                 yerr=std[indices], align="center")
 
@@ -68,6 +66,9 @@ if __name__ == '__main__':
                               random_state=0)
 
         forest.fit(X_train, Y_train)
+
+	acc = accuracy_score(Y_test, forest.predict(X_test))
+	print("Accuracy on test set: %.2f%%" %(100*acc))
 
         importances = forest.feature_importances_
         std = np.std([tree.feature_importances_ for tree in forest.estimators_],
