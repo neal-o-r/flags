@@ -31,7 +31,7 @@ def prepare_data():
 	df = df.sample(frac=1.).reset_index(drop=True)
 
         # get feature columns
-        column_mask = range(7,16) + range(18,28) + [31,32,33]
+        column_mask = range(5,16) + range(18,28) + [31,32,33]
  
         df_features = df[df.columns[column_mask]]
 

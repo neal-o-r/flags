@@ -61,4 +61,4 @@ if __name__ == '__main__':
 
         with open("tree.dot", 'w') as f:
                 f = tree.export_graphviz(model, out_file=f,
-                        class_names=df.columns)
+                        feature_names=df.columns)
